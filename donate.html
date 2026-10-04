@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Donate &mdash; Wema Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<meta name="description" content="Wema Center is a children's home in Mombasa, Kenya — shelter, school fees, healthcare and a family to come home to for children who have nowhere else to turn.">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<header class="nav" id="siteNav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 40 40" fill="none"><g class="mark-ring"><circle cx="20" cy="20" r="18" stroke="var(--primary)" stroke-width="2.4"/><path d="M13 22c2 4 5.6 6 8 6M20 14v-2M13 14l-1.4-1.4M27 14l1.4-1.4" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="20" r="4.2" fill="var(--primary)"/></g></svg>
+      Wema Center
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="about.html">About</a>
+      <a href="programs.html">What we do</a>
+      <a href="homes.html">Our home</a>
+      <a href="impact.html">Impact</a>
+      <a href="donate.html" class="active">Donate</a>
+      <a href="blog.html">Blog</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a href="donate.html" class="btn btn-accent">Donate</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">What we do</a>
+    <a href="homes.html">Our home</a>
+    <a href="impact.html">Impact &amp; progress</a>
+    <a href="donate.html" class="active">Donate</a>
+    <a href="blog.html">Blog</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html" style="color:var(--primary)">Admin demo</a>
+  </div>
+</div>
+<main>
+<div class="container section-pad donate-wrap">
+  <div class="donate-side">
+    <img class="side-art" src="assets/images/donate.jpeg" width="560" height="280" alt="A child at Wema Center waves and holds up a letter for her sponsor">
+    <p class="eyebrow">Get involved</p>
+    <h3>Your gift keeps a light on tonight.</h3>
+    <p>KES 1,500 covers a term of exercise books for one child. KES 6,000 covers a month of meals for a house of eight. Every gift is receipted and reported back to you each term.</p>
+    <div class="sponsor-box">
+      <h4 style="font-family:'Inter';margin-bottom:6px;font-size:1rem">Sponsor a child</h4>
+      <p style="margin-bottom:10px">Commit KES 3,000 a month to one child's school fees, meals and healthcare, and get termly letters and photos.</p>
+      <button class="btn btn-ghost btn-sm" id="sponsorBtn">Start sponsorship</button>
+    </div>
+    <div class="spend-box">
+      <p class="eyebrow" style="margin-bottom:14px">How your shilling is spent</p>
+      <div class="spend-row"><span class="lbl">Direct care</span><div class="bar"><i style="width:62%;background:var(--primary)"></i></div><span class="pct">62%</span></div>
+      <div class="spend-row"><span class="lbl">Education</span><div class="bar"><i style="width:20%;background:var(--accent)"></i></div><span class="pct">20%</span></div>
+      <div class="spend-row"><span class="lbl">Healthcare</span><div class="bar"><i style="width:10%;background:var(--warn)"></i></div><span class="pct">10%</span></div>
+      <div class="spend-row"><span class="lbl">Operations</span><div class="bar"><i style="width:8%;background:var(--text-muted)"></i></div><span class="pct">8%</span></div>
+    </div>
+  </div>
+  <div class="donate-card">
+    <div class="seg" id="freqSeg">
+      <button class="active" data-freq="once">Give once</button>
+      <button data-freq="monthly">Give monthly</button>
+    </div>
+    <form id="donateForm">
+      <div class="field">
+        <label>Amount (KES)</label>
+        <div class="amount-grid" id="amountGrid">
+          <button type="button" data-amt="500">500</button>
+          <button type="button" data-amt="1500" class="active">1,500</button>
+          <button type="button" data-amt="3000">3,000</button>
+          <button type="button" data-amt="6000">6,000</button>
+          <button type="button" data-amt="10000">10,000</button>
+          <button type="button" data-amt="custom">Other</button>
+        </div>
+        <input type="number" min="50" id="customAmount" placeholder="Enter amount" style="margin-top:8px;display:none">
+      </div>
+      <div class="field"><label>Full name</label><input required id="donorName" placeholder="Jane Wanjiru"></div>
+      <div class="field"><label>Email</label><input required type="email" id="donorEmail" placeholder="jane@example.com"></div>
+      <div class="field">
+        <label>Pay with</label>
+        <div class="pay-tabs" id="payTabs">
+          <div class="pay-tab active" data-pay="mpesa">M-Pesa</div>
+          <div class="pay-tab" data-pay="card">Card</div>
+        </div>
+      </div>
+      <div id="payMpesa">
+        <div class="field"><label>M-Pesa phone number</label><input required id="mpesaPhone" placeholder="07XX XXX XXX"></div>
+      </div>
+      <div id="payCard" style="display:none">
+        <div class="field"><label>Card number</label><input id="cardNumber" placeholder="4242 4242 4242 4242"></div>
+        <div style="display:flex;gap:10px">
+          <div class="field" style="flex:1"><label>Expiry</label><input id="cardExpiry" placeholder="MM/YY"></div>
+          <div class="field" style="flex:1"><label>CVC</label><input id="cardCvc" placeholder="123"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="donateSubmit" type="submit">Confirm gift of <span id="submitAmt">KES 1,500</span></button>
+      <div class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Preview checkout &mdash; no real transaction is processed.</div>
+    </form>
+    <div class="donate-success" id="donateSuccess">
+      <div class="check-pop"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <h3 style="font-size:1.3rem">Asante sana!</h3>
+      <p id="successMsg">Your gift has been recorded.</p>
+      <button class="btn btn-outline" id="donateAgainBtn">Make another gift</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:12px"><svg viewBox="0 0 40 40" width="30" height="30" fill="none"><circle cx="20" cy="20" r="18" stroke="var(--primary)" stroke-width="2.4"/><circle cx="20" cy="20" r="4.2" fill="var(--primary)"/></svg>Wema Center</div>
+        <p style="font-size:.86rem">A children's home in Mombasa, Kenya. Registered charitable trust, est. 2015.</p>
+        <a style="margin-bottom:4px" href="tel:+254713199200">+254 713 199 200</a><a href="mailto:giovan.gitonga@akamom.org">giovan.gitonga@akamom.org</a>
+        <div class="newsletter"><input id="newsletterEmail" type="email" placeholder="Your email"><button class="btn btn-primary btn-sm" id="newsletterBtn">Join</button></div>
+      </div>
+      <div class="foot-col"><h5>Explore</h5><a href="about.html">About us</a><a href="homes.html">Our home</a><a href="impact.html">Impact</a><a href="blog.html">Blog</a></div>
+      <div class="foot-col"><h5>Get involved</h5><a href="donate.html">Donate</a><a href="donate.html">Sponsor a child</a><a href="contact.html">Volunteer</a></div>
+      <div class="foot-col"><h5>Organisation</h5><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="admin.html">Admin demo</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Wema Center. </span>
+      <span>Built by Giovan Gitonga</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<div class="popup-banner" id="popupBanner">
+  <button class="popup-close" id="popupClose">&#10005;</button>
+  <h4>Matched giving this week</h4>
+  <p>A partner is matching every new gift up to KES 500,000, until Friday.</p>
+  <a href="donate.html" class="btn btn-accent btn-sm" id="popupCta">Give now</a>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin &mdash; Wema Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<meta name="description" content="Wema Center is a children's home in Mombasa, Kenya — shelter, school fees, healthcare and a family to come home to for children who have nowhere else to turn.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div id="adminLogin" class="login-wrap">
+  <div class="login-card">
+    <h3 style="margin-bottom:6px">Admin sign in</h3>
+    <p style="margin-bottom:16px">Manage homes, blog posts and view donations.</p>
+    <div class="login-hint">Demo credentials &mdash; username <b>admin</b>, password <b>demo1234</b></div>
+    <form id="adminLoginForm">
+      <div class="field"><label>Username</label><input id="adminUser" value="admin"></div>
+      <div class="field"><label>Password</label><input id="adminPass" type="password" value="demo1234"></div>
+      <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    <a class="btn btn-ghost btn-block" style="margin-top:10px;text-align:center" href="index.html">&larr; Back to site</a>
+  </div>
+</div>
+
+<div id="adminDash" style="display:none">
+  <div class="admin-bar">
+    <div class="container">
+      <div class="logo" style="font-size:1.05rem"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><circle cx="20" cy="20" r="18" stroke="var(--primary)" stroke-width="2.4"/><circle cx="20" cy="20" r="4.2" fill="var(--primary)"/></svg>Wema Center &mdash; Admin</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="theme-toggle" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg></button>
+        <a class="btn btn-ghost btn-sm" href="index.html">View site</a>
+        <button class="btn btn-outline btn-sm" id="logoutBtn">Log out</button>
+      </div>
+    </div>
+  </div>
+  <div class="admin-shell">
+    <div class="admin-side">
+      <button class="active" data-panel="overview">Overview</button>
+      <button data-panel="homes">Homes</button>
+      <button data-panel="blog">Blog posts</button>
+      <button data-panel="campaigns">Campaigns</button>
+      <button data-panel="donations">Donations</button>
+      <button data-panel="messages">Messages</button>
+      <button data-panel="settings">Settings</button>
+    </div>
+    <div class="admin-main">
+
+      <div class="admin-panel show" id="panel-overview">
+        <h3 style="margin-bottom:18px">Overview</h3>
+        <div class="admin-cards" id="overviewCards"></div>
+        <h4 style="margin-bottom:10px">Recent donations</h4>
+        <table class="admin-table" id="overviewDonationsTable"><thead><tr><th>Donor</th><th>Amount</th><th>Method</th><th>Date</th></tr></thead><tbody></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-homes">
+        <h3 style="margin-bottom:18px">Children's homes</h3>
+        <button class="btn btn-primary btn-sm" id="addHomeBtn" style="margin-bottom:16px">+ Add a home</button>
+        <div class="admin-form" id="homeForm" style="display:none">
+          <div class="grid2">
+            <div class="field"><label>Home name</label><input id="hName"></div>
+            <div class="field"><label>Location</label><input id="hLocation"></div>
+            <div class="field"><label>Capacity</label><input id="hCapacity" type="number"></div>
+            <div class="field"><label>Age range</label><input id="hAge" placeholder="e.g. 4–17"></div>
+            <div class="field"><label>Year opened</label><input id="hYear" type="number"></div>
+            <div class="field"><label>Accent colour</label><select id="hColor"><option value="primary">Teal</option><option value="accent">Marigold</option><option value="warn">Terracotta</option></select></div>
+          </div>
+          <div class="field"><label>Description</label><textarea id="hDesc" rows="3"></textarea></div>
+          <input type="hidden" id="hEditIndex" value="">
+          <div style="display:flex;gap:10px"><button class="btn btn-primary btn-sm" id="saveHomeBtn" type="button">Save home</button><button class="btn btn-ghost btn-sm" id="cancelHomeBtn" type="button">Cancel</button></div>
+        </div>
+        <table class="admin-table"><thead><tr><th>Home</th><th>Location</th><th>Capacity</th><th>Opened</th><th></th></tr></thead><tbody id="adminHomesBody"></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-blog">
+        <h3 style="margin-bottom:18px">Blog posts</h3>
+        <button class="btn btn-primary btn-sm" id="addPostBtn" style="margin-bottom:16px">+ New post</button>
+        <div class="admin-form" id="postForm" style="display:none">
+          <div class="grid2"><div class="field"><label>Title</label><input id="pTitle"></div><div class="field"><label>Tag</label><input id="pTag" placeholder="e.g. Education"></div></div>
+          <div class="field"><label>Summary (shown on card)</label><textarea id="pSummary" rows="2"></textarea></div>
+          <div class="field"><label>Full post</label><textarea id="pBody" rows="5"></textarea></div>
+          <input type="hidden" id="pEditIndex" value="">
+          <div style="display:flex;gap:10px"><button class="btn btn-primary btn-sm" id="savePostBtn" type="button">Publish post</button><button class="btn btn-ghost btn-sm" id="cancelPostBtn" type="button">Cancel</button></div>
+        </div>
+        <table class="admin-table"><thead><tr><th>Title</th><th>Tag</th><th>Date</th><th></th></tr></thead><tbody id="adminBlogBody"></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-campaigns">
+        <h3 style="margin-bottom:18px">Campaign progress</h3>
+        <p style="margin-bottom:16px">Adjust the raised amount for each active campaign &mdash; changes reflect live on the public Impact &amp; progress page.</p>
+        <table class="admin-table"><thead><tr><th>Campaign</th><th>Goal (KES)</th><th>Raised (KES)</th><th>Update</th></tr></thead><tbody id="adminCampaignsBody"></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-donations">
+        <h3 style="margin-bottom:18px">Donations</h3>
+        <table class="admin-table"><thead><tr><th>Donor</th><th>Email</th><th>Amount</th><th>Frequency</th><th>Method</th><th>Date</th></tr></thead><tbody id="adminDonationsBody"></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-messages">
+        <h3 style="margin-bottom:18px">Contact &amp; volunteer messages</h3>
+        <table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Reason</th><th>Message</th><th>Date</th></tr></thead><tbody id="adminMessagesBody"></tbody></table>
+      </div>
+
+      <div class="admin-panel" id="panel-settings">
+        <h3 style="margin-bottom:18px">Demo settings</h3>
+        <p style="margin-bottom:16px">All data on this site &mdash; homes, posts, donations, messages, campaign totals &mdash; is stored locally in this browser so the demo works without a real backend. Nothing is sent anywhere.</p>
+        <button class="btn btn-outline" id="resetDataBtn">Reset all demo data</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+"use strict";
+var DB_KEYS=window.nwDB.keys, saveDB=window.nwDB.save, toast=window.nwToast;
+var S=window.nwState;
+var homes=S.homes, blogPosts=S.blogPosts, donations=S.donations, messages=S.messages, campaigns=S.campaigns;
+
+function formatDate(iso){ var d=new Date(iso+'T00:00:00'); return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }
+
+document.getElementById('adminLoginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var u=document.getElementById('adminUser').value.trim(), p=document.getElementById('adminPass').value.trim();
+  if(u==='admin' && p==='demo1234'){ sessionStorage.setItem('wc_admin_auth','1'); showDash(); toast('Signed in', 'Welcome back to the admin demo.'); }
+  else { toast('Sign in failed','Check the demo username and password.'); }
+});
+function showDash(){ document.getElementById('adminLogin').style.display='none'; document.getElementById('adminDash').style.display='block'; renderOverview(); renderAdminHomes(); renderAdminBlog(); renderAdminCampaigns(); renderDonationsTable(); renderMessagesTable(); }
+if(sessionStorage.getItem('wc_admin_auth')==='1'){ showDash(); }
+document.getElementById('logoutBtn').addEventListener('click', function(){ sessionStorage.removeItem('wc_admin_auth'); document.getElementById('adminDash').style.display='none'; document.getElementById('adminLogin').style.display='flex'; toast('Signed out',''); });
+
+document.querySelectorAll('.admin-side button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.admin-side button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    document.querySelectorAll('.admin-panel').forEach(function(p){p.classList.remove('show');});
+    document.getElementById('panel-'+b.getAttribute('data-panel')).classList.add('show');
+  });
+});
+
+function renderOverview(){
+  var totalRaised=donations.reduce(function(s,d){return s+d.amount;},0);
+  document.getElementById('overviewCards').innerHTML = [
+    ['Children in homes', homes.reduce(function(s,h){return s+h.capacity;},0)],
+    ['Homes active', homes.length],
+    ['Donations recorded', donations.length],
+    ['Raised via this demo', 'KES '+totalRaised.toLocaleString()]
+  ].map(function(c){ return '<div class="admin-kpi"><b>'+c[1]+'</b><span>'+c[0]+'</span></div>'; }).join('');
+  var tb=document.querySelector('#overviewDonationsTable tbody');
+  tb.innerHTML = donations.slice(0,5).map(function(d){
+    return '<tr><td>'+(d.name||'Anonymous')+'</td><td>KES '+d.amount.toLocaleString()+(d.freq==='monthly'?'/mo':'')+'</td><td>'+(d.method==='mpesa'?'M-Pesa':'Card')+'</td><td>'+new Date(d.date).toLocaleDateString()+'</td></tr>';
+  }).join('') || '<tr><td colspan="4" style="color:var(--text-muted)">No donations recorded yet in this browser.</td></tr>';
+}
+
+function renderAdminHomes(){
+  document.getElementById('adminHomesBody').innerHTML = homes.map(function(h,i){
+    return '<tr><td>'+h.name+'</td><td>'+h.location+'</td><td>'+h.capacity+'</td><td>'+h.year+'</td><td class="row-actions"><button class="btn btn-ghost btn-sm" data-edit-home="'+i+'">Edit</button><button class="btn btn-outline btn-sm" data-del-home="'+i+'">Delete</button></td></tr>';
+  }).join('');
+  document.querySelectorAll('[data-edit-home]').forEach(function(b){ b.addEventListener('click', function(){ editHome(parseInt(b.getAttribute('data-edit-home'),10)); }); });
+  document.querySelectorAll('[data-del-home]').forEach(function(b){ b.addEventListener('click', function(){ var i=parseInt(b.getAttribute('data-del-home'),10); homes.splice(i,1); saveDB(DB_KEYS.homes,homes); renderAdminHomes(); renderOverview(); toast('Home removed',''); }); });
+}
+document.getElementById('addHomeBtn').addEventListener('click', function(){ document.getElementById('hEditIndex').value=''; clearHomeForm(); document.getElementById('homeForm').style.display='block'; });
+document.getElementById('cancelHomeBtn').addEventListener('click', function(){ document.getElementById('homeForm').style.display='none'; });
+function clearHomeForm(){ ['hName','hLocation','hCapacity','hAge','hYear','hDesc'].forEach(function(id){ document.getElementById(id).value=''; }); document.getElementById('hColor').value='primary'; }
+function editHome(i){
+  var h=homes[i];
+  document.getElementById('hEditIndex').value=i;
+  document.getElementById('hName').value=h.name; document.getElementById('hLocation').value=h.location;
+  document.getElementById('hCapacity').value=h.capacity; document.getElementById('hAge').value=h.age;
+  document.getElementById('hYear').value=h.year; document.getElementById('hColor').value=h.color; document.getElementById('hDesc').value=h.desc;
+  document.getElementById('homeForm').style.display='block';
+  document.getElementById('homeForm').scrollIntoView({behavior:'smooth', block:'center'});
+}
+document.getElementById('saveHomeBtn').addEventListener('click', function(){
+  var name=document.getElementById('hName').value.trim();
+  if(!name){ toast('Name required',''); return; }
+  var rec={ name:name, location:document.getElementById('hLocation').value.trim(), capacity:parseInt(document.getElementById('hCapacity').value,10)||0, age:document.getElementById('hAge').value.trim(), year:parseInt(document.getElementById('hYear').value,10)||new Date().getFullYear(), color:document.getElementById('hColor').value, desc:document.getElementById('hDesc').value.trim() };
+  var idx=document.getElementById('hEditIndex').value;
+  if(idx!==''){ homes[parseInt(idx,10)]=rec; } else { homes.push(rec); }
+  saveDB(DB_KEYS.homes,homes);
+  renderAdminHomes(); renderOverview();
+  document.getElementById('homeForm').style.display='none';
+  toast('Home saved', name+' is now live on the site.');
+});
+
+function renderAdminBlog(){
+  document.getElementById('adminBlogBody').innerHTML = blogPosts.map(function(p,i){
+    return '<tr><td>'+p.title+'</td><td><span class="tag-pill">'+p.tag+'</span></td><td>'+formatDate(p.date)+'</td><td class="row-actions"><button class="btn btn-ghost btn-sm" data-edit-post="'+i+'">Edit</button><button class="btn btn-outline btn-sm" data-del-post="'+i+'">Delete</button></td></tr>';
+  }).join('');
+  document.querySelectorAll('[data-edit-post]').forEach(function(b){ b.addEventListener('click', function(){ editPost(parseInt(b.getAttribute('data-edit-post'),10)); }); });
+  document.querySelectorAll('[data-del-post]').forEach(function(b){ b.addEventListener('click', function(){ var i=parseInt(b.getAttribute('data-del-post'),10); blogPosts.splice(i,1); saveDB(DB_KEYS.blog,blogPosts); renderAdminBlog(); toast('Post deleted',''); }); });
+}
+document.getElementById('addPostBtn').addEventListener('click', function(){ document.getElementById('pEditIndex').value=''; clearPostForm(); document.getElementById('postForm').style.display='block'; });
+document.getElementById('cancelPostBtn').addEventListener('click', function(){ document.getElementById('postForm').style.display='none'; });
+function clearPostForm(){ ['pTitle','pTag','pSummary','pBody'].forEach(function(id){ document.getElementById(id).value=''; }); }
+function editPost(i){
+  var p=blogPosts[i];
+  document.getElementById('pEditIndex').value=i;
+  document.getElementById('pTitle').value=p.title; document.getElementById('pTag').value=p.tag;
+  document.getElementById('pSummary').value=p.summary; document.getElementById('pBody').value=p.body;
+  document.getElementById('postForm').style.display='block';
+  document.getElementById('postForm').scrollIntoView({behavior:'smooth', block:'center'});
+}
+document.getElementById('savePostBtn').addEventListener('click', function(){
+  var title=document.getElementById('pTitle').value.trim();
+  if(!title){ toast('Title required',''); return; }
+  var idx=document.getElementById('pEditIndex').value;
+  var rec={ title:title, tag:document.getElementById('pTag').value.trim()||'Update', summary:document.getElementById('pSummary').value.trim(), body:document.getElementById('pBody').value.trim(), date: idx!=='' ? blogPosts[parseInt(idx,10)].date : new Date().toISOString().slice(0,10) };
+  if(idx!==''){ blogPosts[parseInt(idx,10)]=rec; } else { blogPosts.unshift(rec); }
+  saveDB(DB_KEYS.blog,blogPosts);
+  renderAdminBlog();
+  document.getElementById('postForm').style.display='none';
+  toast('Post published', title+' is now live on the blog.');
+});
+
+function renderAdminCampaigns(){
+  document.getElementById('adminCampaignsBody').innerHTML = campaigns.map(function(c,i){
+    return '<tr><td>'+c.name+'</td><td>'+c.goal.toLocaleString()+'</td><td><input type="number" value="'+c.raised+'" id="camp-raised-'+i+'" style="width:120px;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text)"></td><td><button class="btn btn-primary btn-sm" data-save-camp="'+i+'">Update</button></td></tr>';
+  }).join('');
+  document.querySelectorAll('[data-save-camp]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var i=parseInt(b.getAttribute('data-save-camp'),10);
+      var val=parseInt(document.getElementById('camp-raised-'+i).value,10)||0;
+      campaigns[i].raised=Math.min(campaigns[i].goal, Math.max(0,val));
+      saveDB(DB_KEYS.campaigns,campaigns);
+      toast('Campaign updated', campaigns[i].name+' now shows '+Math.round(campaigns[i].raised/campaigns[i].goal*100)+'%.');
+    });
+  });
+}
+
+function renderDonationsTable(){
+  document.getElementById('adminDonationsBody').innerHTML = donations.map(function(d){
+    return '<tr><td>'+(d.name||'Anonymous')+'</td><td>'+(d.email||'&mdash;')+'</td><td>KES '+d.amount.toLocaleString()+'</td><td>'+d.freq+'</td><td>'+(d.method==='mpesa'?'M-Pesa':'Card')+'</td><td>'+new Date(d.date).toLocaleString()+'</td></tr>';
+  }).join('') || '<tr><td colspan="6" style="color:var(--text-muted)">No donations yet.</td></tr>';
+}
+function renderMessagesTable(){
+  document.getElementById('adminMessagesBody').innerHTML = messages.map(function(m){
+    return '<tr><td>'+m.name+'</td><td>'+m.email+'</td><td>'+m.reason+'</td><td>'+m.message+'</td><td>'+new Date(m.date).toLocaleString()+'</td></tr>';
+  }).join('') || '<tr><td colspan="5" style="color:var(--text-muted)">No messages yet.</td></tr>';
+}
+
+document.getElementById('resetDataBtn').addEventListener('click', function(){
+  if(!confirm('Reset all demo data back to the sample content? This clears donations and messages too.')) return;
+  Object.keys(DB_KEYS).forEach(function(k){ localStorage.removeItem(DB_KEYS[k]); });
+  location.reload();
+});
+
+})();
+</script>
+</body>
+</html>

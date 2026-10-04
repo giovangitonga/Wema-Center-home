@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Impact &amp; progress &mdash; Wema Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<meta name="description" content="Wema Center is a children's home in Mombasa, Kenya — shelter, school fees, healthcare and a family to come home to for children who have nowhere else to turn.">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<header class="nav" id="siteNav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 40 40" fill="none"><g class="mark-ring"><circle cx="20" cy="20" r="18" stroke="var(--primary)" stroke-width="2.4"/><path d="M13 22c2 4 5.6 6 8 6M20 14v-2M13 14l-1.4-1.4M27 14l1.4-1.4" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="20" r="4.2" fill="var(--primary)"/></g></svg>
+      Wema Center
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="about.html">About</a>
+      <a href="programs.html">What we do</a>
+      <a href="homes.html">Our home</a>
+      <a href="impact.html" class="active">Impact</a>
+      <a href="donate.html">Donate</a>
+      <a href="blog.html">Blog</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a href="donate.html" class="btn btn-accent">Donate</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">What we do</a>
+    <a href="homes.html">Our home</a>
+    <a href="impact.html" class="active">Impact &amp; progress</a>
+    <a href="donate.html">Donate</a>
+    <a href="blog.html">Blog</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html" style="color:var(--primary)">Admin demo</a>
+  </div>
+</div>
+<main>
+<div class="container section-pad">
+  <div class="section-head"><p class="eyebrow">What we've done</p><h2>Eleven years, in order.</h2></div>
+  <img class="banner-img" src="assets/images/impact2.jpg" width="1160" height="260" alt="The Mombasa coast at sunset, with Fort Jesus, a minaret, palm trees and dhows on the water">
+  <div class="timeline" id="timelineList"></div>
+</div>
+<div class="stats-band">
+  <div class="container">
+    <div class="stat"><b data-count="64">0</b><span>Children raised since 2015</span></div>
+    <div class="stat"><b data-count="11">0</b><span>Years in Mombasa</span></div>
+    <div class="stat"><b data-count="14">0</b><span>Full-time staff</span></div>
+    <div class="stat"><b data-count="5">0</b><span>Partner schools</span></div>
+  </div>
+</div>
+<div class="container section-pad">
+  <div class="section-head">
+    <p class="eyebrow">Progress right now</p>
+    <h2>Three campaigns running this term.</h2>
+    <p>Funded live by supporters &mdash; figures below move when a gift comes in.</p>
+  </div>
+  <div id="campaignList" style="max-width:760px"></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:12px"><svg viewBox="0 0 40 40" width="30" height="30" fill="none"><circle cx="20" cy="20" r="18" stroke="var(--primary)" stroke-width="2.4"/><circle cx="20" cy="20" r="4.2" fill="var(--primary)"/></svg>Wema Center</div>
+        <p style="font-size:.86rem">A children's home in Mombasa, Kenya. Registered charitable trust, est. 2015.</p>
+        <a style="margin-bottom:4px" href="tel:+254713199200">+254 713 199 200</a><a href="mailto:giovan.gitonga@akamom.org">giovan.gitonga@akamom.org</a>
+        <div class="newsletter"><input id="newsletterEmail" type="email" placeholder="Your email"><button class="btn btn-primary btn-sm" id="newsletterBtn">Join</button></div>
+      </div>
+      <div class="foot-col"><h5>Explore</h5><a href="about.html">About us</a><a href="homes.html">Our home</a><a href="impact.html">Impact</a><a href="blog.html">Blog</a></div>
+      <div class="foot-col"><h5>Get involved</h5><a href="donate.html">Donate</a><a href="donate.html">Sponsor a child</a><a href="contact.html">Volunteer</a></div>
+      <div class="foot-col"><h5>Organisation</h5><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="admin.html">Admin demo</a></div>
+    </div>
+     <div class="foot-bottom">
+      <span>&copy; 2026 Wema Center. </span>
+      <span>Built by Giovan Gitonga</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<div class="popup-banner" id="popupBanner">
+  <button class="popup-close" id="popupClose">&#10005;</button>
+  <h4>Matched giving this week</h4>
+  <p>A partner is matching every new gift up to KES 500,000, until Friday.</p>
+  <a href="donate.html" class="btn btn-accent btn-sm" id="popupCta">Give now</a>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

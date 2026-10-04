@@ -83,7 +83,7 @@ var seedBlog=[
 var seedCampaigns=[
   {name:'New dormitory — Wema Center', goal:1800000, raised:1224000, img:IMG+'campaign-dormitory.jpeg'},
   {name:'Solar power upgrade — Wema Center', goal:650000, raised:260000, img:IMG+'campaign-solar.jpeg'},
-  {name:'School fees fund, 2026', goal:400000, raised:328000, img:IMG+'campaign-school-fees.svg'}
+  {name:'School fees fund, 2026', goal:400000, raised:328000, img:IMG+'campaign-fees.jpeg'}
 ];
 
 var seedFaqs=[
